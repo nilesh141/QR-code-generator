@@ -1,11 +1,13 @@
 from email.mime import image
 import qrcode as qr #need to install package
 from PIL import Image
-#img=qr.make("https://www.youtube.com/watch?v=uJv63hoxgWc&t=1790s")
-#img.save("Aathma_rama.png")
+yourLink=input("Enter your link to generate QR code: ")
+imageName=input("Give the name QR code image file without extension: ")
+#img=qr.make(yourLink)
+#img.save(imageName)
 qrc=qr.QRCode(version=1,error_correction=qr.constants.ERROR_CORRECT_H,
                  box_size=10, border=4)
-qrc.add_data("https://www.youtube.com/watch?v=uJv63hoxgWc&t=1790s")
+qrc.add_data(yourLink)
 qrc.make(fit=True)
 img=qrc.make_image(fill_color="red", back_color="blue")
-img.save("Aathma_rama_advanceqr.png")
+img.save(imageName+".png")
